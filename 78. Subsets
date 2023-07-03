@@ -1,0 +1,28 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        int n = nums.length;
+        List<List<Integer>> result = new ArrayList<>();
+        generateAllSubsets(nums, n, 0,new ArrayList<>(), result);
+        return result;
+    }
+
+
+    public static void generateAllSubsets(int nums[], int n, int ind,List<Integer> current, List<List<Integer>> result){
+        
+        if (ind == n) {
+            result.add(new ArrayList<>(current));
+            return;
+        }
+        generateAllSubsets(nums, n, ind + 1,current, result);
+        current.add(nums[ind]);
+        generateAllSubsets(nums, n, ind + 1,current, result);
+        current.remove(current.size() - 1);
+        
+    }
+
+
+
+
+
+
+}
