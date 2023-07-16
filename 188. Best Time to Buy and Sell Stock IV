@@ -28,6 +28,7 @@ class Solution {int f(int ind, int buy, int[] prices, int n, int dp[][][], int k
                
             }
         }
+        return f(0,1,prices,n, dp,k);
         
     
     }
