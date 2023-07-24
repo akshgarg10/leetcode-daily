@@ -1,0 +1,22 @@
+class Solution {
+
+
+    void postOrderLogic(TreeNode node, ArrayList<Integer> postOrder){
+        if(node == null){
+            return;
+        }
+
+        postOrderLogic(node.left, postOrder);
+        postOrderLogic(node.right, postOrder);
+        postOrder.add(node.val);
+    }
+
+
+
+    public List<Integer> postorderTraversal(TreeNode root) {
+        ArrayList<Integer> postOrder = new ArrayList<>();
+        postOrderLogic(root, postOrder);
+        return postOrder;
+        
+    }
+}
