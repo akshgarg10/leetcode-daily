@@ -7,8 +7,8 @@ class Solution {
 
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-
-        while(!q.isEmpty()){
+ 
+        while(!q.isEmpty()){   
 
             int levelSize = q.size();
             List<Integer> currLevel = new ArrayList<>();
