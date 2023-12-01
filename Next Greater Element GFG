@@ -1,0 +1,54 @@
+//{ Driver Code Starts
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    
+	public static void main (String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int t = Integer.parseInt(br.readLine().trim());
+		while(t-->0){
+		    int n = Integer.parseInt(br.readLine().trim());
+		    String inputLine[] = br.readLine().trim().split(" ");
+		    long[] arr = new long[n];
+		    for(int i=0; i<n; i++)arr[i]=Long.parseLong(inputLine[i]);
+		    long[] res = new Solution().nextLargerElement(arr, n);
+		    for (int i = 0; i < n; i++) 
+		        System.out.print(res[i] + " ");
+		    System.out.println();
+		}
+	}
+}
+
+
+
+
+// } Driver Code Ends
+
+
+
+class Solution {
+    public static long[] nextLargerElement(long[] arr, int n) {
+        long[] result = new long[n];
+        Stack<Integer> stack = new Stack<>();
+
+        // Iterate the array from right to left
+        for (int i = n - 1; i >= 0; i--) {
+            // Pop elements from the stack until the stack is empty or the top is greater than arr[i]
+            while (!stack.isEmpty() && arr[i] >= arr[stack.peek()]) {
+                stack.pop();
+            }
+
+            // If stack is not empty, the next greater element is on the top of the stack
+            result[i] = stack.isEmpty() ? -1 : arr[stack.peek()];
+
+            // Push the current element index onto the stack
+            stack.push(i);
+        }
+
+        return result;
+    }
+}
